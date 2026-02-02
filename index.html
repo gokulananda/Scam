@@ -100,7 +100,22 @@
       <div id="tease"></div>
     </div>
 
-    <div class="heart" id="heart">❤️</div>
+    <div id="afterYes" style="display:none; text-align:center;">
+      <div id="yesTopText" style="font-size:1.8rem; color:#b3003b; margin-bottom:20px;">
+        Yeaa!! 🥳, I knew you would say Yess
+      </div>
+
+      <div style="display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap;">
+        <img src="left.jpg" alt="Left memory" style="width:160px; height:auto; border-radius:16px; box-shadow:0 10px 25px rgba(0,0,0,0.2);" />
+        <div class="heart" id="heart">❤️</div>
+        <img src="right.jpg" alt="Right memory" style="width:160px; height:auto; border-radius:16px; box-shadow:0 10px 25px rgba(0,0,0,0.2);" />
+      </div>
+
+      <div id="yesBottomText" style="font-size:1.3rem; color:#7a0030; margin-top:20px; max-width:520px; margin-left:auto; margin-right:auto;">
+        You ain't tough love, Sweetuu. All you need is my arms to melt on 
+      </div>
+    </div>
+  </div>
   </div>
 
   <script>
@@ -116,9 +131,12 @@
       'Are you sure? 😏',
       'Think again 💕',
       'Don’t be shy 😜',
+      'I will take you to the Hills 👻',
+      'Accha chalo mountains ⛰ 😜',
       'Come onnn 🥺',
       'You know you want to 😘'
     ];
+    let teaseIndex = 0;
 
     // Simple random move, always visible
     noBtn.addEventListener('mouseenter', () => {
@@ -135,12 +153,14 @@
       noBtn.style.left = x + 'px';
       noBtn.style.top = y + 'px';
 
-      tease.textContent = teasingTexts[Math.floor(Math.random() * teasingTexts.length)];
+      tease.textContent = teasingTexts[teaseIndex];
+      teaseIndex = (teaseIndex + 1) % teasingTexts.length;
     });
 
     yesBtn.addEventListener('click', () => {
       buttons.style.display = 'none';
       question.style.display = 'none';
+      document.getElementById('afterYes').style.display = 'block';
       heart.style.display = 'block';
       launchConfetti();
     });
